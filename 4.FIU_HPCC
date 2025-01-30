@@ -156,11 +156,10 @@ You should see the vi window with the ~ symbols. Type ‘i’ to get into input 
 
     #!/bin/bash
     
-    #SBATCH --account iacc_jfierst
-    #SBATCH --qos highmem1
+    #SBATCH --account acc_jfierst_classroom
     #SBATCH -n 8
     #SBATCH --output=out_miniTry.log
-    #SBATCH --mail-user=jfierst@fiu.edu
+    #SBATCH --mail-user=YOURFIUIDHERE@fiu.edu
     #SBATCH --mail-type=ALL
 
     module load minimap2-2.24
@@ -176,11 +175,10 @@ What’s going on here? We are telling the system
 
     #!/bin/bash (1)
 
-    #SBATCH --account iacc_jfierst (2)
-    #SBATCH --qos highmem1
+    #SBATCH --account acc_jfierst_classroom (2)
     #SBATCH -n 8
     #SBATCH --output=output_miniTry.log
-    #SBATCH --mail-user=jfierst@fiu.edu
+    #SBATCH --mail-user=YOURFIUIDHERE@fiu.edu
     #SBATCH --mail-type=ALL
     
     module load minimap2-2.24 (3)
