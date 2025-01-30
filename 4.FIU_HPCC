@@ -39,8 +39,71 @@ Why do we type "pwd" instead of "print working directory?" *It is a whole lot sh
 The system will give me the **absolute** path. That means it is the entire path, from the base directory (which is specified by / on a Mac). The forward slashes separate directory levels. Another handy location specifier is ~, which means "home." Every user's home will be different on a given UNIX system.
 
 
-We talked a little last time about how “.” is a location reference that indicates our current 
-working directory. Similarly, “..” is a location reference that indicates one directory up. We can use this location reference to move out of our current directory and into an different directory. The command to change directory is ‘cd’ short for… change directory. Type
+In order to learn navigation we're going to use another command
+
+    $ mkdir that_directory
+
+mkdir = "make directory"
+
+To see what is inside the directory type
+
+    $ ls
+
+Or "list." Now you should see your newly created directory.
+
+The relative path is **relative** to the directory you are in, and it is specified as "." So if you want to type a path relative to your location, you would type 
+
+    $ ./that_directory/
+
+In order to navigate into it, type
+
+    $ cd that_directory
+
+cd = "change directory." Type 
+
+    $ pwd
+
+to see where you are. To navigate backwards, type
+
+    $ cd ..
+
+Try typing
+
+    $ cd ./that_directory
+
+and then
+
+    $ cd /that_directory
+
+instead. Then try "pwd" again. Where are you? Does the forward slash matter?
+
+Navigate back to your home directory. Remember you can do this in a number of ways, including:
+
+    $ cd ~
+
+Now type
+
+    $ rmdir ./that_directory
+
+    $ ls
+
+What happens?
+
+In order to learn more about a command, we can use man = "manual". For example, type
+
+    $ man ls
+
+It should give you a number of options. You call these like so:
+
+    $ ls -a
+
+And now you can see "all" files, including hidden or "dot" files. These are called dot files because their name begins with a dot. They are not typically shown and are usually configuration files for different programs. 
+
+It seems simple but you have mastered UNIX navigation!
+
+
+Now let's navigate around the FIU HPCC itself. Remember “.” is a location reference that indicates our current 
+working directory and “..” is a location reference that indicates one directory up. We can use this location reference to move out of our current directory and into an different directory. The command to change directory is ‘cd’ short for… change directory. Type
 
     $ cd ./
 
