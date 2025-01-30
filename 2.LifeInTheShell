@@ -4,11 +4,7 @@ Bioinformatics often involves dealing with large amounts of data, and biologists
 
 Task 1: Open your terminal
 
-We have 4 options here: 1) the Terminal Playground at sandbox.bio; 2) the Terminal application on a Mac/Linux computer; 3) PowerShell on a PC/Windows computer; 4) and the one we all hope will work is the FIU HPCC!
-
-Let's try to log on to the FIU HPCC and take some time to get everyone oriented there.
-
-
+We have 3 options here: 1) the Terminal Playground at sandbox.bio; 2) the Terminal application on a Mac/Linux computer; 3) PowerShell on a PC/Windows computer; 4) and the one we all hope will work is the FIU HPCC!
 
 Your computer is organized into hierarchical directories, and navigating those directories is our first goal. Each directory has a **path**, and paths can be absolute or relative. 
 
