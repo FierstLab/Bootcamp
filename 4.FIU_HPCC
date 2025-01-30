@@ -24,7 +24,22 @@ and
 
     $ pwd
 
-to figure out where you are. We talked a little last time about how “.” is a location reference that indicates our current 
+to figure out where you are. 
+
+Computers are organized into hierarchical directories, and navigating those directories is our first goal. Each directory has a **path**, and paths can be absolute or relative. 
+
+Once you have your terminal open, you should see a prompt ($). For the rest of the class, the $ prompt means I am in the terminal. Type the text that follows to see what the UNIX command does. For example, to see what directory you are currently in type 
+
+    $ pwd
+
+Most UNIX commands have a meaningful name, and learning the meaning helps me to remember it. For example, pwd = "print working directory." I'm asking the computer to tell me which directory I'm working in. The first thing to know is that everything in the shell is a program. When I type "pwd" I'm calling a program that tells UNIX to tell me which directory I'm working in.
+
+Why do we type "pwd" instead of "print working directory?" *It is a whole lot shorter.* When you spend your entire day working on the computer, you need to find efficiency. Also, **spaces do not work in the shell.** Memorize this, take it to heart, remember every time you do anything on the computer. Putting spaces in your filenames will only cause pain and suffering later.
+
+The system will give me the **absolute** path. That means it is the entire path, from the base directory (which is specified by / on a Mac). The forward slashes separate directory levels. Another handy location specifier is ~, which means "home." Every user's home will be different on a given UNIX system.
+
+
+We talked a little last time about how “.” is a location reference that indicates our current 
 working directory. Similarly, “..” is a location reference that indicates one directory up. We can use this location reference to move out of our current directory and into an different directory. The command to change directory is ‘cd’ short for… change directory. Type
 
     $ cd ./
