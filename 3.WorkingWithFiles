@@ -4,87 +4,186 @@ Last time we learned how to navigate a directory structure using shell commands.
 
 **Getting the file**
 
-First, log on to the ASC.
+You have 3 options for this tutorial:
 
-    $ ssh -l yourusernamehere dmc.asc.edu
+1) the Terminal Playground at sandbox.bio; 2) the Terminal application on your Mac/Linux OS; 3) PowerShell on your PC/Windows OS.
 
-You should see an occupant in your home directory, a directory called **class_shared**. We will use this directory for sharing data files. 
+We are analyzing a file of DNA sequence from a recent Illumina sequencing runrun (this is only part of the file).
 
-We are analyzing a file of DNA sequence from a recent Illumina HiSeq run (this is only part of the file). Sequencing files are very large so we compress them to save space. The file should be in the **shared** directory in your home directory. You can read things in **shared** but you can’t edit so copy it from **shared** into your home directory. There are two ways to navigate into the **shared** directory. First, you can get to it from your directory:
+@SN747:483:C77GWACXX:1:1102:2015:10148 1:N:0:AGGCAGAA+ACNNNATA
+TGCAGGAAGGCGTTTCGTAAGAATGAAAAGAGTTGCTCCACAATGTGTCACGTCCAAATTGAAGAAGAACTGAAACACATACAAGTACATTATTTTGTAAT
++
+@@CFDFDFHHGHHJIHHIIJJGIIJIJJJIIJGGIIJJJJJIIIIGIJJJJJHIJJIJIGHGHHHHHHFFFFFEC@CCBCCCCDD@ACDFECEEEEDDEDA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNNATA
+TGCAGGGGGTGAGAATGACGAAAGGAAAGAAGGGAAAGATCGCCCGACCGAATGGACAGTACAAGCTTGTCGATATAGTTCCTGTCTCTTATACACATCTC
++
+??@D1BDAD@D?FG?EHIGIIGGBHIHIIEGC=F<FHGIIIEBHFDECCBBBBCC>>CB>@CCCCB@CC8@B?BB0>>:@>>@>C>CCCC:CCC@CC@@CA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TNCAGGTCCTTGTGCTCCTTGATATCCTTCTCTTCCTGGTCGCCCAACTGGACCACGCGGATTGATATACCTATTTGTATTCTGTCCGGGCGGTCCACTTG
++
+@#14ADBDFDDA<DECGB@HGHE>HEHGG@CGECHHG<31:DBGG)0?3BD;CGGHIIID<<A>;@CCAC@C:AA5;>@CDDDDECC?099BB5>B>(+:(
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:TGGCAGAA+ACNNCATA
+GTGGATCCTGTGCTGCCTCGCCTTCGCCGGCGCCGCCCACGGTTGCGGCTCTCCCGCCATCTCGCCCGTCATCACCGGTTACTCTCGTATCGTGAACGGCG
++
+1:1+=2A=:DDFBB@+2+33@188<C))0)0-'-54'',59?,52(,37-0>(+37-5-0((:8?;;;;B?<::>9<@<-&:@ABA@BBBB0<@A?((5>5
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATA
+ATGTATTCCGGGATGACTAGGTGTGGGGGGAGGGGCCGGCGGGTGGTGGCCTCCCGACTTGTCACTCGTCAGTATCGTGTTGCCTTGTTTCGTGCCCGGGG
++
+(0022)))))(((2())))2))).((((()&&)&&&&&&&&)&)0&&(+(((+(()&&)+++((++(++(()((+((+((+((((+++(+2(((((+)&&)
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGTGACCCAAATATGCAAATGCGGTGTAGTTGTGGAACGTCGCAGTTGCGAAGTGTCGCAGTTGCGAAATGTCGCGAAGCTCTCCACTTCCAAGATG
++
+:;?AAD=BFHHFHHIIGHJIJIDHIJJJGHHGJJJCGHGIJJJIJIJIIGIHEHDEF;?@C?BDB;;>ABDD=?CDDB?@>BDBCCDDDDDDDDD@CCDDA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+GGATGACCTTGTAAGGGTTGGTATCTTCCACAGCGCTTCTTGTCATCTAAAACGGAAACCAAATGACTCAAATTCTCTGAAAGTGACCATTTGTCTCGCAG
++
+:1=442AB==C?C?,+A:?:):<<A<AE>FFI?F:?F6@49?DDFF<FFBB<B:55@E9;6A6==?7;;@37;(66;6>@>3>>;;>@:>5,5,:5>AB50
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGAGAGAGAGATGCCATCGGCTCCTCTTCTCTCTATCTTCTCTTTTGAATTTTTGCAAAATGTGGAATGATATCCAATCTCCCTGTCTCTTATACAC
++
+@@@A;A?BC?D<DB;EHIGCH@;DDH))93:B>??D<<<DFCHEEBD?FHBC88)8=F'=@C:@=.?>CCCC;7777.6;CC3>;(;5(>CCCCC<@35;>
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATC
+TGCAGGAAACCGAGCGTCCAAAAATTCATCGCTTCTCATCCACAGCTTCACAACTGTCTCTTATACACATCTCCGAGCCCACGAGACAGGCAGAAATCTCG
++
+813=58((:=>((8>/<5=;>??(.3<3169(373>)))<>1)..;1)=>;??6)8=8>?@8=8=987((..6=93,'855;)&)05(+2(266(55:2:(
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGTCACTACAGGAGGTCTCTGAAAAAAGAAATAACAATTAATTGTTTCTAGCTTTTTCCAAAGTAAATTGAAATTTGTCATGCTCTAAATAATATCT
++
+[jfierst@u05 willis_10-8-15_demux]$ head -100 Undetermined_S0_L001_R1_001.fastq.AGGCAGAA+ACTGCATA
+@SN747:483:C77GWACXX:1:1102:2015:10148 1:N:0:AGGCAGAA+ACNNNATA
+TGCAGGAAGGCGTTTCGTAAGAATGAAAAGAGTTGCTCCACAATGTGTCACGTCCAAATTGAAGAAGAACTGAAACACATACAAGTACATTATTTTGTAAT
++
+@@CFDFDFHHGHHJIHHIIJJGIIJIJJJIIJGGIIJJJJJIIIIGIJJJJJHIJJIJIGHGHHHHHHFFFFFEC@CCBCCCCDD@ACDFECEEEEDDEDA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNNATA
+TGCAGGGGGTGAGAATGACGAAAGGAAAGAAGGGAAAGATCGCCCGACCGAATGGACAGTACAAGCTTGTCGATATAGTTCCTGTCTCTTATACACATCTC
++
+??@D1BDAD@D?FG?EHIGIIGGBHIHIIEGC=F<FHGIIIEBHFDECCBBBBCC>>CB>@CCCCB@CC8@B?BB0>>:@>>@>C>CCCC:CCC@CC@@CA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TNCAGGTCCTTGTGCTCCTTGATATCCTTCTCTTCCTGGTCGCCCAACTGGACCACGCGGATTGATATACCTATTTGTATTCTGTCCGGGCGGTCCACTTG
++
+@#14ADBDFDDA<DECGB@HGHE>HEHGG@CGECHHG<31:DBGG)0?3BD;CGGHIIID<<A>;@CCAC@C:AA5;>@CDDDDECC?099BB5>B>(+:(
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:TGGCAGAA+ACNNCATA
+GTGGATCCTGTGCTGCCTCGCCTTCGCCGGCGCCGCCCACGGTTGCGGCTCTCCCGCCATCTCGCCCGTCATCACCGGTTACTCTCGTATCGTGAACGGCG
++
+1:1+=2A=:DDFBB@+2+33@188<C))0)0-'-54'',59?,52(,37-0>(+37-5-0((:8?;;;;B?<::>9<@<-&:@ABA@BBBB0<@A?((5>5
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATA
+ATGTATTCCGGGATGACTAGGTGTGGGGGGAGGGGCCGGCGGGTGGTGGCCTCCCGACTTGTCACTCGTCAGTATCGTGTTGCCTTGTTTCGTGCCCGGGG
++
+(0022)))))(((2())))2))).((((()&&)&&&&&&&&)&)0&&(+(((+(()&&)+++((++(++(()((+((+((+((((+++(+2(((((+)&&)
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGTGACCCAAATATGCAAATGCGGTGTAGTTGTGGAACGTCGCAGTTGCGAAGTGTCGCAGTTGCGAAATGTCGCGAAGCTCTCCACTTCCAAGATG
++
+:;?AAD=BFHHFHHIIGHJIJIDHIJJJGHHGJJJCGHGIJJJIJIJIIGIHEHDEF;?@C?BDB;;>ABDD=?CDDB?@>BDBCCDDDDDDDDD@CCDDA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+GGATGACCTTGTAAGGGTTGGTATCTTCCACAGCGCTTCTTGTCATCTAAAACGGAAACCAAATGACTCAAATTCTCTGAAAGTGACCATTTGTCTCGCAG
++
+:1=442AB==C?C?,+A:?:):<<A<AE>FFI?F:?F6@49?DDFF<FFBB<B:55@E9;6A6==?7;;@37;(66;6>@>3>>;;>@:>5,5,:5>AB50
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGAGAGAGAGATGCCATCGGCTCCTCTTCTCTCTATCTTCTCTTTTGAATTTTTGCAAAATGTGGAATGATATCCAATCTCCCTGTCTCTTATACAC
++
+@@@A;A?BC?D<DB;EHIGCH@;DDH))93:B>??D<<<DFCHEEBD?FHBC88)8=F'=@C:@=.?>CCCC;7777.6;CC3>;(;5(>CCCCC<@35;>
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATC
+TGCAGGAAACCGAGCGTCCAAAAATTCATCGCTTCTCATCCACAGCTTCACAACTGTCTCTTATACACATCTCCGAGCCCACGAGACAGGCAGAAATCTCG
++
+813=58((:=>((8>/<5=;>??(.3<3169(373>)))<>1)..;1)=>;??6)8=8>?@8=8=987((..6=93,'855;)&)05(+2(266(55:2:(
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGTCACTACAGGAGGTCTCTGAAAAAAGAAATAACAATTAATTGTTTCTAGCTTTTTCCAAAGTAAATTGAAATTTGTCATGCTCTAAATAATATCT
++
+@@CFFFDFFHHFHJJJJJJCGIJJJJJIJEGIIIJIIJIJJIJJGIIJIJJJJGJHIJJJIJIIJJIHHHHGHHGBEFFFFFEDEEEEEDDCCACCDDEDC
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGCACAAATGCTTGCCACTCTTGATGTCATGATGGGTGGACGAGTAGCTGAAGAACTCATTTTTGGAGAAGACAAAGTAACAACTGGAGCAGCCGAT
++
+<?@FFFFFFHHHGGGEGGIIGGIJIGGGCHBFFGIIICDC?@GEGIGI@CHHGICHGIIIJCHCEHHF>'7;ACC>ACCC?;@CDCCBCDCDBCBDBDDDB
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATA
+GATCGGAAGAGCACACGTCTACATACAAATACTCGGCCAGACTCAGCAATGCCTTCATTACTTGACAATTTATTGTTGTCCTTTTAATGTTAATCAAAATC
++
+;==+A<<A8@ABB+?;?+?+22++11****1?**1):?A22(****./))))))/8).))))).7.)))))).77;>26(..5-;-(5(-55(,((((,:(
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGCCGAATAAAGCAAGCCATCCGGATGCAGAAAAAAAGATTGGCTGATGATGCAGAATATAAAGAGCAGGAACAGTTCAGGGTCCGATGGGAAACCA
++
+CCCFFFFFHDDHHIIJIIIHIIIJJJIJJIIHHIGHJIJJIIDHGGGHHHDEFFFFFECEEECDCEECCCDDDDD<ABDDDDEDDDDDDD<BDDDDDBDDA
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCAGGGGCGCAGAGGACAAGAACAAATTTCATTTTGGATTGAATGTATCATCTCGGTATCCAATGATCTTTTTATATGGTTCTTTGTTTTGAATCCGTCG
++
+@CC=DDDFHFHHHGHIIGIGIIGJGGHHIIGHIJIJIJFIJJJIGH>EHEHEFFFDDCDCEDCDDDDDDEDDACA:>BBCCCCCDDCD?DDB?@CCA9BB&
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATC
+GTCGTCGTCTTTCCATGTGCTTGTTGACTGTGCTTCGGTGAGTCGTGGCAGGTACCTTGGGAGCCTTCCGGATTGGTGAAGTCCACAGGGGGGGGGACGGG
++
+11122<7?CA=A2<,<,<A9A4+2+?+<A*1:44?A)0?10>**0/7;=)(5()/.77).((-',)).(,'','((,(,,,5(,,(,297&00&5)&))&)
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATA
+CCCGACCGCTAGCTCGACACCGTGGAGGACTCAAGTGGGCATCTAGGGCGTAAGGAGGCGGGGACGTGGGGGTCGCTTGCAAGCAGCTGGAGCCGCGTGAA
++
+1++++))))))0+++)))))0))))((((())))))/)(().))...(.'''(,((('('&&&))&&((&&)&0)5&(+(((((23(((((++(&&)&)(+
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTGAAAAAAAAAATGTACGTGCGTGATAGGGGGGTCTAT
++
+@<@FDFFFGHGHHHEHGHIIIGIGHEHIJI<?CGGHGIIEIIIJIJ25@;CG@AE=(?C@7>A>>66;>='20&&+(((+((((&2)(+(+((&&))&+((
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNTATA
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTGGACAAAACTAGACAGTTTGTATGAGGCATGCCTAAC
++
+=+1AAAA<<AABBBBBC+@=A@A>=AA*:?B>4*?*:?A80)=>?<=7=7=>==:AA1=.)73.)-))).)6(;((.-((;3;?9(,(,(((((,(+(+(+
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNNATA
+TGCAGGCGGCGCAGTCCATGCCGCTGACTTTCCAGCTATAGCGGGAGCCGGAGACGTTTTCAGAGAGCGTTGGCGAGCTGGAACATGCGCCGTCGCAGCAA
++
+?@?+4BDDHDHGHJGIIJIJJGJJJJJJJJJJGHHHHHHDFEFDDDDDBDDDDDBB?@CBCCACDDBBDBDBDDDBDBDDDBDD?CCDDDDB0<BD>BBBC
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+TGCTGGCTGTCTATTTTGTTTGTAACTGGAATTTTAAGGTCCATAGAACAAAGGAAAATGGGCGGTCTGTATTGAACATTATAGTCAAAACAATGTGAAAA
++
+?@@+==DDDDFDFHHIJGGGHFCDHEEGHGGEHIJGIHJBGEGIJJJJJJGHIFGFEGCEHGIIF?CCCCCDDDD>CCDDDEECCDEACDDDBCCACDEDD
+@SN747:483:C77GWACXX:1:1102:0:0 1:N:0:AGGCAGAA+ACNNCATA
+CCGTCGCCTCCAAAAGGAAGTGCGCCCGAGACCGGACGAGGCGGCGGCGCTCAAAGAGCTCAGCGTCGGCCCTACGCCCCTCGGCCACACCGCGAAGCCGG
++
+1114=0)20<?<::<<1A@A2:*8CAFA8@6@?F;4@EBB9?8;588B-5&&)((+39(+(((+&++5&0-&((+&)5><?<B&805?B++)0&&)&)8)&
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATC
+ATCGACCTTCGGCCTTTTTAAGGTGGCAAAAGTTGGTCGCTTTCATCGCGTAGATCGCCTCGGCATTGACGGACCAGTTCCTTATTCACTCTCTTTCACTT
++
+1:=+2?7AA7?68<6ABBBB9A=11?:):?)10?A3:*);A=;=>A=)('-'--73;;/3''',,'59(5',3&0+(+3+88:8=3((+38;83;?:(8::
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATA
+GGCAGCCTTATAACCGCCAACAAAGTCCACACAGCCGATGCCGAACCAGTCCGACCCATCGACTATTTGATCCCACACTCGCTGTCTCTTATACACATCTC
++
+(-7==(()2>11>14?<<(9(@<1)29<??<((((.<99/()-;58=5==?05/3,',385('85=;<=<:628<89(++29850:/+8:<:<::::<:/+
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+ACNNCATA
+CTCTCAGTCTAAGTAGGCGGGCGGAAACACCGCTGCAGGATCATGGCGACACCAAGGCGGGGGGTCGGGGATCAGTGCCACGCTCGTGAGTGGGTACTCGG
++
+===A++2,++,2,,,2+2)))0-4-''..((,3',3(((((,/((((&&&)&((((((&)&)5&0)0&)0&&(((+++((+&)&&&&+(2(((+&((+3(2
+@SN747:483:C77GWACXX:1:1102:0:0 1:Y:0:AGGCAGAA+CCNNCATA
+CGTTCCGGTCGATAAAGGAGGAGTGGCAATCCAAGTGGGGGAGGGGGCAGTTCACGTGATCGTGAGGTTTAGTAGAACTCGGAAGGGGTGGGTGAAGGTAG
++
+00022.(((03((222.=31>((.2(:)00<.3<)0))(-5=-'''''3',((,,++((+58(((((((((+((+((+(((+&(02))&&)))&(+(((+(
 
-    $ cd ./shared
 
-Or you can get to it from the large **/home/** directory, either with the absolute path
+In order to create a file we will need to paste the sequences above into your text editor.
 
-    $ cd /home/shared/fierst_class
+My favorite is vim. It has a lot of functionality but we will use it in the most simple way to create our scripts. Type
 
-Or you can 1) navigate to your home directory
-
-    $ cd ~
+    $ vi file.fastq
     
-and 2) navigate to the shared directory
+Your window should now have a lot of blue tildes in a single column. You are inside your file and you can edit it. Type 'i' for 'insertion mode' and you should see 
 
-    $ cd ../shared
-    
-and then 3) navigate to our class directory (note the name change!)
+    --INSERT--
 
-    $ cd fierst_class
+ at the bottom of your screen. Copy the sequences above and paste them into your terminal.
 
-Once you have located the directory you can copy the file into your home directory. Some other standard shell commands are cp (copy) and mv (move). Both commands take the syntax **operation - from location 1- to location 2**. 
+In order to run our script we need to save our file and exit vi. We do this by hitting the escape key to move from insertion mode to command mode, typing the save command and typing the exit or quit command. Type
 
-    $ cp ./file.fastq.gz ~
+    <escape>
+    :wq
 
-Ordinarily we could copy with the relative location reference but the **shared** directory is a symbolic link and we need to copy files out of it with an absolute path. Do you remember what the ‘.’ and ‘..’ location references indicate? What is the difference between a relative and absolute path?
+You should now be back at your prompt. Check your file exists by typing
 
-A symbolic link is a secondary way to access a directory. It means the **shared** directory does not actually live inside your home directory, it lives somewhere else and the ASC folks have added a symbolic link to let you access the data. For example, try
+    $ ls
 
-    $ cp ./file.fastq.gz ../
+to list your directory contents.
 
-What happens? Now try
+Check the file size with 
 
-    $ pwd
-
-and try to copy the file with the *absolute* path to your home directory
-
-    $ cp ./file.fastq.gz *yourpathhere*
-
-What happens?
-
-Now we are ready to start learning how to work with files. Navigate back to your home directory
-
-    $ cd ../
-
-or
-
-    $ cd ~
-
-and check the file size with 
-
-    $ du -h file.fastq.gz
+    $ du -h file.fastq
 
 What does "du" stand for? What is the -h? Try
 
     $ man du
 
 and remember to use ‘q’ when you are ready to quit looking at the manual.
-
-First we need to uncompress or unzip the file.
-
-    $ gunzip file.fastq.gz
-
-What is “gunzip”? Use
-
-    $ man gunzip
-
-to examine the manual. You should see the name of the file change from having a '.fastq.gz' extension to '.fastq'
-
-    $ ls 
-
-Check the file size again
-
-    $ du -h file.fastq
-
-Is it different from before? How much of a difference in size does the compression account for?
 
 Look inside the file with
 
@@ -120,17 +219,17 @@ Count the number of unique lines in the file with 'wc'
 
     $ wc file.fastq
 
-What is the output? (Note: this is a real file and counting lines will take a little while) 
+What is the output?
 
 Try 
 
     $ man wc
 
-to understand the columns. Now try 
+to understand the columns in your output. Now try 
 
     $ wc -l file.fastq
 
-where wc -l = "word count by line." How many lines do you have? How many actual DNA sequences do you have?
+where wc -l = "word count by line." How many lines do you have? How many actual DNA sequences do you have? (hint: remember that each DNA sequence gets 4 lines!)
 
 Again, wc is a very powerful command, so take some time to understand it. Type 
 
@@ -238,7 +337,7 @@ First we will make a small file to operate on before doing analyses on our large
 
 Type
 
-    $ head -10000 file.fastq > small_file.fastq
+    $ head -10 file.fastq > small_file.fastq
 
 You have now created a small file for testing. Count the files in your original file.fastq and your new small_file.fastq like this
 
