@@ -1,0 +1,11 @@
+We will be logging onto the HPCC and doing some preliminary navigation. You will use your panther credentials
+(username and password) to connect.
+
+
+Login at the FIU Panther cluster Web portal from a browser: https://hpcgui.fiu.edu
+Note: Mozilla Firefox has not been working for me lately and I have to connect via Safari.
+
+Once you are on, go to the top where it says 'Clusters' and select 'Panther Shell Access.' It will open a terminal and ask you 
+for your panther credentials again.
+
+Congratulations! You are officially on the server.
